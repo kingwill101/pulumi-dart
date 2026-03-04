@@ -10,7 +10,7 @@ import (
 )
 
 const (
-	defaultPulumiGitURL  = "https://github.com/pulumi/pulumi-dart.git"
+	defaultPulumiGitURL  = "https://github.com/kingwill101/pulumi-dart.git"
 	defaultPulumiGitPath = "pulumi-dart"
 	defaultPulumiPubDev  = "https://pub.dev/api/packages/pulumi"
 )

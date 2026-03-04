@@ -352,7 +352,7 @@ dependencies:
 	assert.Contains(t, updated, "pulumi-dart.git")
 	assert.Contains(t, updated, "path: pulumi-dart")
 	assert.NotContains(t, updated, "pulumi: ^1.0.0")
-	assert.Contains(t, updated, "dependency_overrides:")
+	assert.NotContains(t, updated, "dependency_overrides:")
 }
 
 func TestTemplateHonorsExplicitPathDependency(t *testing.T) {
@@ -382,7 +382,7 @@ dependencies:
 	require.NoError(t, err)
 	updated := string(updatedBytes)
 	assert.Contains(t, updated, "path: /tmp/local-pulumi")
-	assert.Contains(t, updated, "dependency_overrides:")
+	assert.NotContains(t, updated, "dependency_overrides:")
 	assert.False(t, strings.Contains(updated, "pulumi-dart.git"))
 }
 
@@ -411,7 +411,7 @@ dependencies:
 	require.NoError(t, err)
 	updated := string(updatedBytes)
 	assert.Contains(t, updated, "path: /tmp/override-pulumi")
-	assert.Contains(t, updated, "dependency_overrides:")
+	assert.NotContains(t, updated, "dependency_overrides:")
 	assert.NotContains(t, updated, "pulumi-dart.git")
 }
 
@@ -444,7 +444,7 @@ dependencies:
 	assert.NotContains(t, updated, "pulumi-dart.git")
 }
 
-func TestTemplateAddsOverrideForExplicitGitDependency(t *testing.T) {
+func TestTemplateDoesNotAddOverrideForExplicitGitDependencyByDefault(t *testing.T) {
 	t.Parallel()
 
 	programDir := t.TempDir()
@@ -454,7 +454,41 @@ name: template_project
 dependencies:
   pulumi:
     git:
-      url: https://github.com/pulumi/pulumi-dart.git
+      url: https://github.com/kingwill101/pulumi-dart.git
+      path: pulumi-dart
+`
+	err := os.WriteFile(pubspecPath, []byte(pubspec), 0o600)
+	require.NoError(t, err)
+
+	host := &dartLanguageHost{}
+	resp, err := host.Template(context.Background(), &pulumirpc.TemplateRequest{
+		Info: &pulumirpc.ProgramInfo{
+			ProgramDirectory: programDir,
+		},
+	})
+	require.NoError(t, err)
+	require.NotNil(t, resp)
+
+	updatedBytes, err := os.ReadFile(pubspecPath)
+	require.NoError(t, err)
+	updated := string(updatedBytes)
+	assert.NotContains(t, updated, "dependency_overrides:")
+	assert.Contains(t, updated, "url: https://github.com/kingwill101/pulumi-dart.git")
+}
+
+func TestTemplatePreservesExistingPulumiOverride(t *testing.T) {
+	t.Parallel()
+
+	programDir := t.TempDir()
+	pubspecPath := filepath.Join(programDir, "pubspec.yaml")
+	pubspec := `
+name: template_project
+dependencies:
+  pulumi: ^1.0.0
+dependency_overrides:
+  pulumi:
+    git:
+      url: https://example.com/old.git
       path: pulumi-dart
 `
 	err := os.WriteFile(pubspecPath, []byte(pubspec), 0o600)
@@ -473,7 +507,36 @@ dependencies:
 	require.NoError(t, err)
 	updated := string(updatedBytes)
 	assert.Contains(t, updated, "dependency_overrides:")
-	assert.Contains(t, updated, "url: https://github.com/pulumi/pulumi-dart.git")
+	assert.Contains(t, updated, "url: https://github.com/kingwill101/pulumi-dart.git")
+}
+
+func TestTemplateCanForcePulumiOverrideViaEnv(t *testing.T) {
+	t.Setenv("PULUMI_DART_FORCE_PULUMI_DEPENDENCY_OVERRIDE", "true")
+
+	programDir := t.TempDir()
+	pubspecPath := filepath.Join(programDir, "pubspec.yaml")
+	pubspec := `
+name: template_project
+dependencies:
+  pulumi: ^1.0.0
+`
+	err := os.WriteFile(pubspecPath, []byte(pubspec), 0o600)
+	require.NoError(t, err)
+
+	host := &dartLanguageHost{}
+	resp, err := host.Template(context.Background(), &pulumirpc.TemplateRequest{
+		Info: &pulumirpc.ProgramInfo{
+			ProgramDirectory: programDir,
+		},
+	})
+	require.NoError(t, err)
+	require.NotNil(t, resp)
+
+	updatedBytes, err := os.ReadFile(pubspecPath)
+	require.NoError(t, err)
+	updated := string(updatedBytes)
+	assert.Contains(t, updated, "dependency_overrides:")
+	assert.Contains(t, updated, "url: https://github.com/kingwill101/pulumi-dart.git")
 }
 
 func TestTemplateRewritesPulumiProviderDepsToLocalPaths(t *testing.T) {
@@ -491,7 +554,7 @@ dependencies:
   pulumi: ^1.0.0
   pulumi_random:
     git:
-      url: https://github.com/pulumi/pulumi-dart.git
+      url: https://github.com/kingwill101/pulumi-dart.git
       path: packages/random
 `
 	err := os.WriteFile(pubspecPath, []byte(pubspec), 0o600)

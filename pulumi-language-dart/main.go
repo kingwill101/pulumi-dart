@@ -493,6 +493,12 @@ func appendDartFileFingerprint(entries *[]string, programDirectory, path string)
 		return nil
 	}
 
+	contents, err := os.ReadFile(path)
+	if err != nil {
+		return err
+	}
+	contentHash := sha256.Sum256(contents)
+
 	relative := path
 	if programDirectory != "" {
 		if rel, err := filepath.Rel(programDirectory, path); err == nil {
@@ -500,7 +506,7 @@ func appendDartFileFingerprint(entries *[]string, programDirectory, path string)
 		}
 	}
 	relative = filepath.ToSlash(relative)
-	*entries = append(*entries, fmt.Sprintf("%s|%d|%d", relative, stat.Size(), stat.ModTime().UTC().UnixNano()))
+	*entries = append(*entries, fmt.Sprintf("%s|%x", relative, contentHash))
 	return nil
 }
 
@@ -1856,10 +1862,12 @@ func (host *dartLanguageHost) Template(
 	currentPulumiDep, hasPulumiDependency := pubspec.Dependencies["pulumi"]
 	if hasPulumiDependency && !codegen.ShouldRewriteTemplatePulumiDependency(currentPulumiDep) {
 		if codegen.IsSourceDependencySpec(currentPulumiDep) {
-			if pubspec.DependencyOverrides == nil {
-				pubspec.DependencyOverrides = map[string]interface{}{}
+			if codegen.ShouldApplyPulumiDependencyOverride(pubspec) {
+				if pubspec.DependencyOverrides == nil {
+					pubspec.DependencyOverrides = map[string]interface{}{}
+				}
+				pubspec.DependencyOverrides["pulumi"] = currentPulumiDep
 			}
-			pubspec.DependencyOverrides["pulumi"] = currentPulumiDep
 			pubspecBytes, err := yaml.Marshal(pubspec)
 			if err != nil {
 				return nil, fmt.Errorf("failed to marshal pubspec.yaml in template hook: %w", err)
@@ -1874,10 +1882,12 @@ func (host *dartLanguageHost) Template(
 	pulumiSpec := codegen.DefaultPulumiPubspecDependency()
 	pubspec.Dependencies["pulumi"] = pulumiSpec
 	if codegen.IsSourceDependencySpec(pulumiSpec) {
-		if pubspec.DependencyOverrides == nil {
-			pubspec.DependencyOverrides = map[string]interface{}{}
+		if codegen.ShouldApplyPulumiDependencyOverride(pubspec) {
+			if pubspec.DependencyOverrides == nil {
+				pubspec.DependencyOverrides = map[string]interface{}{}
+			}
+			pubspec.DependencyOverrides["pulumi"] = pulumiSpec
 		}
-		pubspec.DependencyOverrides["pulumi"] = pulumiSpec
 	}
 
 	// When a local pulumi path is used, prefer local source dependencies for any

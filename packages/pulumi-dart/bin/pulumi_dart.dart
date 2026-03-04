@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
-const _defaultRepo = 'pulumi/pulumi-dart';
+const _defaultRepo = 'kingwill101/pulumi-dart';
 const _defaultRef = 'main';
 
 Future<void> main(List<String> args) async {

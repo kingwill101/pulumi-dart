@@ -9,5 +9,5 @@ pulumi new ./templates/dart-random -y --name my-random-stack --stack dev --secre
 Remote usage:
 
 ```bash
-pulumi new https://github.com/pulumi/pulumi-dart/tree/main/templates/dart-random -y --name my-random-stack --stack dev --secrets-provider passphrase
+pulumi new https://github.com/kingwill101/pulumi-dart/tree/main/templates/dart-random -y --name my-random-stack --stack dev --secrets-provider passphrase
 ```

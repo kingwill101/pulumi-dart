@@ -448,10 +448,12 @@ func applyGeneratedPulumiDependency(existing *codegen.PubSpec, generated *codege
 	}
 	existing.Dependencies["pulumi"] = pulumiDependency
 
-	if existing.DependencyOverrides == nil {
-		existing.DependencyOverrides = map[string]interface{}{}
+	if codegen.ShouldApplyPulumiDependencyOverride(existing) {
+		if existing.DependencyOverrides == nil {
+			existing.DependencyOverrides = map[string]interface{}{}
+		}
+		existing.DependencyOverrides["pulumi"] = pulumiDependency
 	}
-	existing.DependencyOverrides["pulumi"] = pulumiDependency
 
 	return true
 }

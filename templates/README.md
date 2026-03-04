@@ -16,7 +16,7 @@ pulumi new ./templates/dart-minimal -y --name my-dart-stack --stack dev --secret
 Use from GitHub:
 
 ```bash
-pulumi new https://github.com/pulumi/pulumi-dart/tree/main/templates/dart-minimal -y --name my-dart-stack --stack dev --secrets-provider passphrase
+pulumi new https://github.com/kingwill101/pulumi-dart/tree/main/templates/dart-minimal -y --name my-dart-stack --stack dev --secrets-provider passphrase
 ```
 
 During `pulumi new`, `pulumi-language-dart` normalizes the `pulumi` dependency source
